@@ -5,7 +5,12 @@ export default defineNuxtConfig({
     },
 
     css: ["~/assets/styles/main.scss"],
-    modules: ["@fedorae/nuxt-uikit", "nuxt-svgo", "nuxt-icon"],
+    modules: [
+        "@fedorae/nuxt-uikit",
+        "nuxt-svgo",
+        "nuxt-icon",
+        'nuxt3-leaflet'
+    ],
     devtools: { enabled: true },
     vite: {
         css: {

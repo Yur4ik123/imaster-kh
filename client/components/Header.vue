@@ -98,13 +98,17 @@
         }
     }
     .header__bot{
-        padding: 10px 0;
+        padding: 15px 0;
         .container{
             display: flex;
             align-items: center;
             justify-content: space-between;
             .logo__wrapper{
-                .logo__link{}
+                .logo__link{
+                   img{
+                       filter: drop-shadow(5px 5px 5px $main-color);
+                   }
+                }
             }
         }
     }
