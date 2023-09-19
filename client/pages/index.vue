@@ -16,7 +16,7 @@
                                 </h2>
                                 <div class="btn__wrapper uk-flex uk-flex-center">
                                     <a href="#request" class="request__btn default__btn">
-                                        Записатися на ремонт
+                                        {{$t('request_btn')}}
                                     </a>
                                 </div>
                             </div>
@@ -33,7 +33,7 @@
                                 </h2>
                                 <div class="btn__wrapper uk-flex uk-flex-center">
                                     <a href="#request" class="request__btn default__btn">
-                                        Записатися на ремонт
+                                        {{$t('request_btn')}}
                                     </a>
                                 </div>
                             </div>
@@ -50,7 +50,7 @@
                                 </h2>
                                 <div class="btn__wrapper uk-flex uk-flex-center">
                                     <a href="#request" class="request__btn default__btn">
-                                        Записатися на ремонт
+                                        {{$t('request_btn')}}
                                     </a>
                                 </div>
                             </div>
@@ -69,12 +69,10 @@
                        </span>
 
                     </div>
-                    <div class="process__head">
-                        Ви телефонуєте
+                    <div class="process__head" v-text="$t('process.proc_1_title')">
                     </div>
-                    <div class="process__title">
-                        Надзвичайна ситуація? Розкажіть нам, які конкретні проблеми у вас виникли, і ми вирішимо їх
-                        протягом 7 робочих днів.
+                    <div class="process__title" v-html="$t('process.proc_1_description')">
+
                     </div>
                 </div>
                 <div class="process">
@@ -84,12 +82,9 @@
                        </span>
 
                     </div>
-                    <div class="process__head">
-                        Приходите до нас
+                    <div class="process__head" v-text="$t('process.proc_2_title')">
                     </div>
-                    <div class="process__title">
-                        Оглядаємо пристрій, попередньо (при можливості) встановлюємо несправність, оговорюємо вартість
-                        та терміни ремонту
+                    <div class="process__title" v-html="$t('process.proc_2_description')">
                     </div>
                 </div>
                 <div class="process">
@@ -99,11 +94,9 @@
                        </span>
 
                     </div>
-                    <div class="process__head">
-                        Ремонтуємо
+                    <div class="process__head" v-text="$t('process.proc_3_title')">
                     </div>
-                    <div class="process__title">
-                        Ми відремонтуємо ваш пристрій і надамо 90-денну гарантію!
+                    <div class="process__title" v-html="$t('process.proc_3_description')">
                     </div>
                 </div>
                 <div class="process">
@@ -111,14 +104,10 @@
                        <span class="icon__circle">
                                 <Icon name="ci:happy" color="white" size="45"/>
                        </span>
-
                     </div>
-                    <div class="process__head">
-                        Ви щасливі!
+                    <div class="process__head" v-text="$t('process.proc_4_title')">
                     </div>
-                    <div class="process__title">
-                        У зазначений час ви отримуєте пристрій назад – все в порядку! Обов’язково використовуйте його
-                        потім для власного задоволення.
+                    <div class="process__title" v-html="$t('process.proc_4_description')">
                     </div>
                 </div>
             </div>

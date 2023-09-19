@@ -1,5 +1,5 @@
 <template>
-    <form action="" class="contact__form default__form">
+    <form @submit.prevent="submitRequest" class="contact__form default__form">
         <div class="input__wrapper">
             <input type="text" name="name" placeholder="Ім'я" class="input">
         </div>
@@ -17,6 +17,21 @@
         </div>
     </form>
 </template>
+<script setup>
+
+const submitRequest = async ()=>{
+    const config = useRuntimeConfig();
+    const {data} = await useFetch('/api/request', {
+        method: 'post',
+        body:{
+            name: 'kurwa'
+        },
+        baseURL:config.public.BASE_URL
+
+    })
+}
+
+</script>
 <style lang="scss">
 @include default-form;
 .contact__form{

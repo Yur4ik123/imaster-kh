@@ -17,6 +17,7 @@
                         (099)000-64-61
                     </a>
                 </div>
+                <LocaleSwitcher/>
             </div>
         </div>
         <div class="header__bot">
