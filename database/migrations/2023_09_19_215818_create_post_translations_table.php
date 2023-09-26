@@ -12,7 +12,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('post_id');
             $table->string('locale')->index();
             $table->string('title');
-            $table->longText('content');
+            $table->longText('content')->nullable();
             $table->unique(['post_id','locale']);
             $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
             $table->softDeletes();

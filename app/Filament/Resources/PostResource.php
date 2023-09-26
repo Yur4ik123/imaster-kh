@@ -5,65 +5,69 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\PostResource\Pages;
 use App\Filament\Resources\PostResource\RelationManagers;
 use App\Models\Post;
-
+use Filament\Actions\CreateAction;
+use Filament\Actions\DeleteAction;
 use Filament\Forms;
-use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Fieldset;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
+use Filament\Forms\Components\Tabs;
 use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Support\Str;
-use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
 class PostResource extends Resource
 {
     protected static ?string $model = Post::class;
-    protected static ?string $label = 'пост';
-    protected static ?string $pluralLabel = 'Пости';
-    protected static ?string $navigationGroup = 'Блог';
+    protected static ?string $slug = 'posts';
+    protected static ?string $recordTitleAttribute = 'id';
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
+        $tabs = [];
+        foreach (config('translatable.locales') as $locale) {
+            $tabs[] = Tabs\Tab::make($locale)->schema([
+                Forms\Components\TextInput::make($locale . '.title')->label('Заголовок')
+                ->reactive()
+                ->afterStateUpdated(function (Set $set, $state) use ($locale){
+                    $set($locale.'.meta.slug', \Str::slug($state));
+                }),
+                Forms\Components\RichEditor::make($locale . '.content')->label('Конетент'),
+                TextInput::make($locale . '.meta.slug')->label('URL'),
+                TextInput::make($locale . '.meta.title')->label('Meta title'),
+                Textarea::make($locale . '.meta.description')->label('Meta description'),
+            ]);
+        }
         return $form
             ->schema([
-                TextInput::make('title')
-                    ->label('Назва статті')
-                    ->required()
-                    ->reactive()
-                    ->afterStateUpdated(function (Set $set, $state){
-                        $set('slug', Str::slug($state));
-                    }),
-                TextInput::make('slug')->label('Slug')->required(),
-                FileUpload::make('image')
-                    ->label('Основне зображення')
-                    ->required()
-                ->disk('public')
-                ->image(),
-                TinyEditor::make('content')->simple()->label('Контент'),
-                Toggle::make('is_published')->label('Опубліковано')
-
-            ]);
+                Tabs::make('')->tabs($tabs),
+                Forms\Components\FileUpload::make('image')->label('Картинка'),
+                Forms\Components\Toggle::make('is_published')->label('Опублікувати')
+            ])
+            ->columns(1);
     }
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
-                Tables\Columns\IconColumn::make('is_published')
-                    ->boolean(),
-
+                Tables\Columns\TextColumn::make('title'),
+                Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\ToggleColumn::make('is_published')
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -75,15 +79,17 @@ class PostResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+       //     RelationManagers\PostsRelationManager::class
         ];
     }
+
 
     public static function getPages(): array
     {
         return [
             'index' => Pages\ListPosts::route('/'),
             'create' => Pages\CreatePost::route('/create'),
+           // 'view' => Pages\ViewPost::route('/{record}'),
             'edit' => Pages\EditPost::route('/{record}/edit'),
         ];
     }

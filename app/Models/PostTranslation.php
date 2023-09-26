@@ -8,5 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class PostTranslation extends Model
 {
     use SoftDeletes;
-    protected $fillable = ['title', 'content'];
+    protected $table = 'post_translations';
+
+    protected $guarded = ['id'];
+
 }

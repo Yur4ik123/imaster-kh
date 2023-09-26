@@ -13,6 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return 'go to api';
-});
+
+Route::get('/', \App\Http\Controllers\Controller::class);
