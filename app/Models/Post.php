@@ -18,7 +18,6 @@ class Post extends Model implements TranslatableContract
     protected $guarded = ['id'];
     public $translatedAttributes = ['title', 'content'];
 
-    public $timestamps = false;
     public function meta():MorphOne
     {
         return $this->morphOne(Meta::class,  'metaable');

@@ -14,4 +14,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', \App\Http\Controllers\Controller::class);
+//Route::get('/', \App\Http\Controllers\Controller::class);

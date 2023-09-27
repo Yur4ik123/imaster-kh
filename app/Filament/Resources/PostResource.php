@@ -25,6 +25,11 @@ class PostResource extends Resource
 {
     protected static ?string $model = Post::class;
     protected static ?string $slug = 'posts';
+    protected static ?string $label = "Всі пости";
+    protected static ?string $pluralLabel = 'Всі пости';
+    protected static ?string $navigationLabel = 'Блог';
+    protected static ?string $navigationGroup = 'Блог';
+    protected static ?string $breadcrumb = 'Блог';
     protected static ?string $recordTitleAttribute = 'id';
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -34,10 +39,11 @@ class PostResource extends Resource
         foreach (config('translatable.locales') as $locale) {
             $tabs[] = Tabs\Tab::make($locale)->schema([
                 Forms\Components\TextInput::make($locale . '.title')->label('Заголовок')
-                ->reactive()
-                ->afterStateUpdated(function (Set $set, $state) use ($locale){
-                    $set($locale.'.meta.slug', \Str::slug($state));
-                }),
+                    ->reactive()
+                    ->required()
+                    ->afterStateUpdated(function (Set $set, $state) use ($locale) {
+                        $set($locale . '.meta.slug', \Str::slug($state));
+                    }),
                 Forms\Components\RichEditor::make($locale . '.content')->label('Конетент'),
                 TextInput::make($locale . '.meta.slug')->label('URL'),
                 TextInput::make($locale . '.meta.title')->label('Meta title'),
@@ -47,7 +53,7 @@ class PostResource extends Resource
         return $form
             ->schema([
                 Tabs::make('')->tabs($tabs),
-                Forms\Components\FileUpload::make('image')->label('Картинка'),
+                Forms\Components\FileUpload::make('image')->label('Картинка')->image(),
                 Forms\Components\Toggle::make('is_published')->label('Опублікувати')
             ])
             ->columns(1);
@@ -57,10 +63,11 @@ class PostResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('title'),
-                Tables\Columns\ImageColumn::make('image'),
-                Tables\Columns\ToggleColumn::make('is_published')
-            ])
+                Tables\Columns\TextColumn::make('id')->label("ID"),
+                Tables\Columns\TextColumn::make('title')->label("Заголовок"),
+                Tables\Columns\ImageColumn::make('image')->label("Прев'ю")->size(100),
+                Tables\Columns\ToggleColumn::make('is_published')->label('Опубліковано')
+            ])->defaultSort('created_at', 'desc')
             ->filters([
                 //
             ])
@@ -79,8 +86,12 @@ class PostResource extends Resource
     public static function getRelations(): array
     {
         return [
-       //     RelationManagers\PostsRelationManager::class
+            //     RelationManagers\PostsRelationManager::class
         ];
+    }
+    public static function getGloballySearchableAttributes(): array
+    {
+        return [];
     }
 
 
@@ -89,7 +100,7 @@ class PostResource extends Resource
         return [
             'index' => Pages\ListPosts::route('/'),
             'create' => Pages\CreatePost::route('/create'),
-           // 'view' => Pages\ViewPost::route('/{record}'),
+            // 'view' => Pages\ViewPost::route('/{record}'),
             'edit' => Pages\EditPost::route('/{record}/edit'),
         ];
     }

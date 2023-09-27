@@ -16,18 +16,18 @@ class CreatePost extends CreateRecord
     {
 
         $res = parent::handleRecordCreation($data);
+        $meta = [];
         foreach (config('translatable.locales') as $locale) {
-            $meta = $data[$locale]['meta'];
-            $meta[$locale] = $meta;
+            $meta[$locale] = $data[$locale]['meta'];
+            //   $meta[$locale] = $meta;
             unset($meta['slug'], $meta['title'], $meta['description']);
-            $res->meta()->create($meta);
         }
-         return $res;
+        return $res->meta()->create($meta);
     }
 
     //    TODO:Обработка редиректа после сохранения
     protected function getRedirectUrl(): string
     {
-        return false;
+        return $this->getResource()::getUrl('index');
     }
 }

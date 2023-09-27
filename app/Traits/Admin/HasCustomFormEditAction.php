@@ -28,7 +28,6 @@ trait HasCustomFormEditAction
         $data['referer'] = request()->server('HTTP_REFERER');
     }
     protected function mutateMeta(&$data) {
-
         if(!isset($data['meta'])) {
             $data['meta'] = [];
             foreach ($this->record?->meta?->translations??[] as $meta) {

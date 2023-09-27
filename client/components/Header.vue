@@ -23,7 +23,7 @@
         <div class="header__bot">
             <div class="container">
                 <div class="logo__wrapper">
-                    <nuxt-link to="/" class="logo__link">
+                    <nuxt-link :to="localPath('/')" class="logo__link">
                         <img src="~/assets/img/logo.png" width="150" alt="">
                     </nuxt-link>
                 </div>
@@ -34,6 +34,9 @@
         </div>
     </header>
 </template>
+<script setup>
+    const localPath = useLocalePath()
+</script>
 <style lang="scss">
 .header {
     .top__bar {

@@ -12,7 +12,7 @@ class Meta extends Model implements TranslatableContract
 {
     use Translatable;
 
-    protected $guarded = ['id' ];
+    protected $guarded = ['id'];
     public $translatedAttributes = [
         'slug',
         'title',

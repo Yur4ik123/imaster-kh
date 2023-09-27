@@ -13,8 +13,6 @@ class Controller extends BaseController
 
     public function __invoke(){
         $post = new Post();
-        dd($post->find(12)->meta->translations);
-        dd( $post->meta->translations);
-        return 'asd';
+            return 'asd';
     }
 }

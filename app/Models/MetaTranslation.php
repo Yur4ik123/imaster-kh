@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class MetaTranslation extends Model
 {
     use HasFactory;
-    protected $guarded = ['id'];
+    protected $guarded = ['id', 'meta_id'];
     public $timestamps = false;
     protected $casts = ['robots' => 'json'];
 
