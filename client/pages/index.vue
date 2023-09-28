@@ -5,7 +5,7 @@
                 <div class="uk-slider-container">
                     <ul class="uk-slider-items uk-position-relative">
                         <li class="slider__item">
-                            <img class="slider__img" src="~/assets/img/slider/slider_1.jpg" width="1920" height="726"
+                            <img class="slider__img" src="../assets/img/slider/slider_1.jpg" width="1920" height="726"
                                  alt="">
                             <div class="uk-position-center uk-panel">
                                 <h3 class="slider__subheader">
@@ -22,7 +22,7 @@
                             </div>
                         </li>
                         <li class="slider__item">
-                            <img class="slider__img" src="~/assets/img/slider/slider_2.jpg" width="1920" height="763"
+                            <img class="slider__img" src="../assets/img/slider/slider_2.jpg" width="1920" height="763"
                                  alt="">
                             <div class="uk-position-center uk-panel">
                                 <h3 class="slider__subheader">
@@ -39,7 +39,7 @@
                             </div>
                         </li>
                         <li class="slider__item">
-                            <img class="slider__img" src="~/assets/img/slider/slider_3.jpg" width="1920" height="763"
+                            <img class="slider__img" src="../assets/img/slider/slider_3.jpg" width="1920" height="763"
                                  alt="">
                             <div class="uk-position-center uk-panel">
                                 <h3 class="slider__subheader">

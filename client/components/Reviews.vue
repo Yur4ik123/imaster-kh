@@ -9,7 +9,7 @@
                     <ul class="uk-slider-items">
                         <li class="review__slide">
                             <div class="avatar__wrapper" v-if="true">
-                                <img src="~/assets/img/testimonial-1.jpg" width="91" height="91" alt="">
+                                <img src="../assets/img/testimonial-1.jpg" width="91" height="91" alt="">
                             </div>
                             <div class="avatar__wrapper no_avatar" v-else>
                                 <Icon name="icon-park-outline:avatar" color="white" size="50%" ></Icon>
@@ -27,7 +27,7 @@
                         </li>
                         <li class="review__slide">
                             <div class="avatar__wrapper" v-if="false">
-                                <img src="~/assets/img/testimonial-1.jpg" width="91" height="91" alt="">
+                                <img src="../assets/img/testimonial-1.jpg" width="91" height="91" alt="">
                             </div>
                             <div class="avatar__wrapper no_avatar" v-else>
                                 <Icon name="icon-park-outline:avatar" color="white" size="50%" ></Icon>
@@ -45,7 +45,7 @@
                         </li>
                         <li class="review__slide">
                             <div class="avatar__wrapper" v-if="false">
-                                <img src="~/assets/img/testimonial-1.jpg" width="91" height="91" alt="">
+                                <img src="../assets/img/testimonial-1.jpg" width="91" height="91" alt="">
                             </div>
                             <div class="avatar__wrapper no_avatar" v-else>
                                 <Icon name="icon-park-outline:avatar" color="white" size="50%" ></Icon>
@@ -63,7 +63,7 @@
                         </li>
                         <li class="review__slide">
                             <div class="avatar__wrapper" v-if="false">
-                                <img src="~/assets/img/testimonial-1.jpg" width="91" height="91" alt="">
+                                <img src="../assets/img/testimonial-1.jpg" width="91" height="91" alt="">
                             </div>
                             <div class="avatar__wrapper no_avatar" v-else>
                                 <Icon name="icon-park-outline:avatar" color="white" size="50%" ></Icon>
@@ -81,7 +81,7 @@
                         </li>
                         <li class="review__slide">
                             <div class="avatar__wrapper" v-if="true">
-                                <img src="~/assets/img/testimonial-1.jpg" width="91" height="91" alt="">
+                                <img src="../assets/img/testimonial-1.jpg" width="91" height="91" alt="">
                             </div>
                             <div class="avatar__wrapper no_avatar" v-else>
                                 <Icon name="icon-park-outline:avatar" color="white" size="50%" ></Icon>
@@ -99,7 +99,7 @@
                         </li>
                         <li class="review__slide">
                             <div class="avatar__wrapper" v-if="true">
-                                <img src="~/assets/img/testimonial-1.jpg" width="91" height="91" alt="">
+                                <img src="../assets/img/testimonial-1.jpg" width="91" height="91" alt="">
                             </div>
                             <div class="avatar__wrapper no_avatar" v-else>
                                 <Icon name="icon-park-outline:avatar" color="white" size="50%" ></Icon>

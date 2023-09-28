@@ -3,7 +3,7 @@
         <div class="container">
             <div class="contact__info">
                 <div class="company__logo">
-                    <img src="~/assets/img/logo.png" width="180px" alt="">
+                    <img src="../assets/img/logo.png" width="180px" alt="">
                 </div>
                 <div class="soc__links">
                     <a href="" target="_blank" class="soc__links-item">

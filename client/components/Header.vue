@@ -24,7 +24,7 @@
             <div class="container">
                 <div class="logo__wrapper">
                     <nuxt-link :to="localPath('/')" class="logo__link">
-                        <img src="~/assets/img/logo.png" width="150" alt="">
+                        <img src="../assets/img/logo.png" width="150" alt="">
                     </nuxt-link>
                 </div>
                 <div class="nav__wrapper">

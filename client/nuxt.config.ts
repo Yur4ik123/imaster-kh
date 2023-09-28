@@ -1,14 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import path from 'path';
-
-
 export default defineNuxtConfig({
-    srcDir: 'client/',
-    app: {
-        head: {
-
-        },
-    },
     css: ["~/assets/styles/main.scss"],
     modules: [
         "@fedorae/nuxt-uikit",
@@ -18,7 +9,6 @@ export default defineNuxtConfig({
         '@nuxtjs/i18n',
     ],
     i18n: {
-
         strategy:'prefix_except_default',
         defaultLocale: "uk",
         locales: [
@@ -34,7 +24,7 @@ export default defineNuxtConfig({
             }
         ],
         lazy: true,
-        langDir: `${__dirname}/resources/lang/`,
+        langDir: `${__dirname}/lang/`,
         detectBrowserLanguage: false,
     },
     devtools: { enabled: true },
@@ -49,10 +39,9 @@ export default defineNuxtConfig({
     },
     runtimeConfig: {
         public: {
-            BASE_URL:  process.env.APP_URL || '',
-            NITRO_PORT:process.env.NITRO_PORT || '',
-            NITRO_HOST:process.env.NITRO_HOST || '',
+            BASE_URL:  'https://imaster.loc',
+            NITRO_PORT:'3000',
+            NITRO_HOST:'127.0.0.1',
         },
     },
 });
-
