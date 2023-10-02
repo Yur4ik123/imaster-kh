@@ -28,10 +28,10 @@ class PostResource extends Resource
     protected static ?string $label = "Всі пости";
     protected static ?string $pluralLabel = 'Всі пости';
     protected static ?string $navigationLabel = 'Блог';
-    protected static ?string $navigationGroup = 'Блог';
+//    protected static ?string $navigationGroup = 'Блог';
     protected static ?string $breadcrumb = 'Блог';
     protected static ?string $recordTitleAttribute = 'id';
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-device-tablet';
 
     public static function form(Form $form): Form
     {

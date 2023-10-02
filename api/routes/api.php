@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\RequestController;
+use App\Http\Controllers\SliderController;
 use App\Http\Controllers\StaticTranslationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,7 +23,7 @@ Route::group(['prefix' => 'blog'], function (){
     Route::get('/post/{id}', [BlogController::class, 'show']);
     Route::get('/last-posts', [BlogController::class, 'lastPosts']);
 });
-
+Route::get('/slider', [SliderController::class, 'index']);
 
 
 

@@ -9,7 +9,11 @@ class Request extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required'
+            'name'=>'required',
+            'msg'=>'required',
+            'email'=>'required|email',
+            'tel'=>'required',
+            'request_type'=>'required'
         ];
     }
 
