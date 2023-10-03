@@ -7,114 +7,23 @@
             <div class="reviews__slider " uk-slider="finite:true; sets:true">
                 <div class="uk-slider-container uk-position-relative uk-visible-toggle">
                     <ul class="uk-slider-items">
-                        <li class="review__slide">
+
+                        <li class="review__slide" v-for="comment in comments">
                             <div class="avatar__wrapper" v-if="true">
                                 <img src="../assets/img/testimonial-1.jpg" width="91" height="91" alt="">
                             </div>
                             <div class="avatar__wrapper no_avatar" v-else>
                                 <Icon name="icon-park-outline:avatar" color="white" size="50%" ></Icon>
                             </div>
-                            <div class="user__name">
-                                Karen Walters
+                            <div class="user__name" v-text="comment.name">
                             </div>
                             <div class="quotes">
                                 <Icon name="ooui:quotes-ltr" color="#5b60ac" size="40px"></Icon>
                             </div>
-                            <div class="review__content">
-                                Losing a lot of important data that I had on my laptop’s HDD was devastating… Imagine my sheer joy, when these bunch of tech magicians retrieved it all for me in mere 24 hours!
-
+                            <div class="review__content" v-text="comment.msg">
                             </div>
                         </li>
-                        <li class="review__slide">
-                            <div class="avatar__wrapper" v-if="false">
-                                <img src="../assets/img/testimonial-1.jpg" width="91" height="91" alt="">
-                            </div>
-                            <div class="avatar__wrapper no_avatar" v-else>
-                                <Icon name="icon-park-outline:avatar" color="white" size="50%" ></Icon>
-                            </div>
-                            <div class="user__name">
-                                Karen Walters
-                            </div>
-                            <div class="quotes">
-                                <Icon name="ooui:quotes-ltr" color="#5b60ac" size="40px"></Icon>
-                            </div>
-                            <div class="review__content">
-                                Losing a lot of important data that I had on my laptop’s HDD was devastating… Imagine my sheer joy, when these bunch of tech magicians retrieved it all for me in mere 24 hours!
 
-                            </div>
-                        </li>
-                        <li class="review__slide">
-                            <div class="avatar__wrapper" v-if="false">
-                                <img src="../assets/img/testimonial-1.jpg" width="91" height="91" alt="">
-                            </div>
-                            <div class="avatar__wrapper no_avatar" v-else>
-                                <Icon name="icon-park-outline:avatar" color="white" size="50%" ></Icon>
-                            </div>
-                            <div class="user__name">
-                                Karen Walters
-                            </div>
-                            <div class="quotes">
-                                <Icon name="ooui:quotes-ltr" color="#5b60ac" size="40px"></Icon>
-                            </div>
-                            <div class="review__content">
-                                Losing a lot of important data that I had on my laptop’s HDD was devastating… Imagine my sheer joy, when these bunch of tech magicians retrieved it all for me in mere 24 hours!
-
-                            </div>
-                        </li>
-                        <li class="review__slide">
-                            <div class="avatar__wrapper" v-if="false">
-                                <img src="../assets/img/testimonial-1.jpg" width="91" height="91" alt="">
-                            </div>
-                            <div class="avatar__wrapper no_avatar" v-else>
-                                <Icon name="icon-park-outline:avatar" color="white" size="50%" ></Icon>
-                            </div>
-                            <div class="user__name">
-                                Karen Walters
-                            </div>
-                            <div class="quotes">
-                                <Icon name="ooui:quotes-ltr" color="#5b60ac" size="40px"></Icon>
-                            </div>
-                            <div class="review__content">
-                                Losing a lot of important data that I had on my laptop’s HDD was devastating… Imagine my sheer joy, when these bunch of tech magicians retrieved it all for me in mere 24 hours!
-
-                            </div>
-                        </li>
-                        <li class="review__slide">
-                            <div class="avatar__wrapper" v-if="true">
-                                <img src="../assets/img/testimonial-1.jpg" width="91" height="91" alt="">
-                            </div>
-                            <div class="avatar__wrapper no_avatar" v-else>
-                                <Icon name="icon-park-outline:avatar" color="white" size="50%" ></Icon>
-                            </div>
-                            <div class="user__name">
-                                Karen Walters
-                            </div>
-                            <div class="quotes">
-                                <Icon name="ooui:quotes-ltr" color="#5b60ac" size="40px"></Icon>
-                            </div>
-                            <div class="review__content">
-                                Losing a lot of important data that I had on my laptop’s HDD was devastating… Imagine my sheer joy, when these bunch of tech magicians retrieved it all for me in mere 24 hours!
-
-                            </div>
-                        </li>
-                        <li class="review__slide">
-                            <div class="avatar__wrapper" v-if="true">
-                                <img src="../assets/img/testimonial-1.jpg" width="91" height="91" alt="">
-                            </div>
-                            <div class="avatar__wrapper no_avatar" v-else>
-                                <Icon name="icon-park-outline:avatar" color="white" size="50%" ></Icon>
-                            </div>
-                            <div class="user__name">
-                                Karen Walters
-                            </div>
-                            <div class="quotes">
-                                <Icon name="ooui:quotes-ltr" color="#5b60ac" size="40px"></Icon>
-                            </div>
-                            <div class="review__content">
-                                Losing a lot of important data that I had on my laptop’s HDD was devastating… Imagine my sheer joy, when these bunch of tech magicians retrieved it all for me in mere 24 hours!
-
-                            </div>
-                        </li>
                     </ul>
                     <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#"  uk-slider-item="previous">
                         <Icon name="mdi:arrow-left-bold-box-outline" color="#272972" size="35px"></Icon>
@@ -128,6 +37,17 @@
         </div>
     </div>
 </template>
+<script setup>
+const config = useRuntimeConfig();
+const localPath = useLocalePath();
+const {locale} = useI18n()
+const {data:comments, pending, error, refresh} = await useFetch('/api/comments/all', {
+  baseURL:config.public.BASE_URL,
+  query:{
+    locale
+  },
+})
+</script>
 <style lang="scss">
 .reviews__section {
     @include section-header;

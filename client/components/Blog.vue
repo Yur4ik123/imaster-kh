@@ -8,7 +8,7 @@
             <div class="posts__wrapper">
                 <div class="post__item" v-for="post in posts">
                     <nuxt-link :to="localPath(`/blog/${post.meta.slug}`)" class="post__img">
-                        <img :src="`${config.public.BASE_URL}/storage/${post.image}`" alt="">
+                        <img :src="`${config.public.BASE_URL}${post.img_path}`" alt="">
                     </nuxt-link>
                     <span  class="post__date">
                             12.09.2023

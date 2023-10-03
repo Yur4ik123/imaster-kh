@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\RequestController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\StaticTranslationController;
@@ -23,7 +24,12 @@ Route::group(['prefix' => 'blog'], function (){
     Route::get('/post/{id}', [BlogController::class, 'show']);
     Route::get('/last-posts', [BlogController::class, 'lastPosts']);
 });
+Route::group(['prefix' => 'comments'], function (){
+    Route::get('/all', [CommentsController::class, 'getAllComments']);
+});
+
 Route::get('/slider', [SliderController::class, 'index']);
+
 
 
 

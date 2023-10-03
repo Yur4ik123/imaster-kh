@@ -24,7 +24,7 @@ export default defineNuxtConfig({
             }
         ],
         lazy: true,
-        langDir: `${__dirname}/lang/`,
+        langDir: `./lang/`,
         detectBrowserLanguage: false,
     },
     devtools: { enabled: true },
